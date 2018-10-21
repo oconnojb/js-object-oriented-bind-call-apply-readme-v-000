@@ -1,12 +1,13 @@
-// use this to copy code snippets or us your browser's console
-function greet() {
-	console.log(`my name is ${this.name}, hi!`);
-}
-
 let sally = { name: 'Sally' };
 
-greet.call(sally);
-// my name is Sally, hi!
+function greet(customer) {
+	console.log(`Hi ${customer}, my name is ${this.name}!`);
+}
 
-greet.apply(sally);
-// my name is Sally, hi!
+let newGreet = greet.bind(sally); // newGreet is context-bound to sally
+
+newGreet('Bob');
+// Hi Bob, my name is Sally!
+
+greet('Bob');
+// Hi Bob, my name is !
